@@ -16,7 +16,9 @@ jobs:
           node-version: 22
       - name: Deploy to Railway
         env:
-          # Railway CLI uses RAILWAY_API_TOKEN (account-scoped) as auth.
-          # RAILWAY_TOKEN (project-scoped) also works but is env-specific.
+          # Railway CLI uses RAILWAY_API_TOKEN for auth (account-scoped token).
+          # RAILWAY_PROJECT_ID + RAILWAY_ENVIRONMENT_ID replace the need for `railway link`.
           RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
+          RAILWAY_ENVIRONMENT_ID: ${{ secrets.RAILWAY_ENVIRONMENT_ID }}
         run: npx -y @railway/cli up --service ${{ secrets.RAILWAY_SERVICE_ID }} --detach
