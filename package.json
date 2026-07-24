@@ -17,5 +17,15 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "sharp",
+      "bcrypt"
+    ]
   }
 }
